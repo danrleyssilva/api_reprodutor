@@ -48,7 +48,7 @@ try {
   // 10.0.2.2 emulador
   // 192.168.1.167 ip
   // $urlVideo = str_replace('localhost', '10.0.2.2', $video['url']);
-  $urlVideo = str_replace('localhost', '192.168.0.112', $video['url']);
+  $urlVideo = str_replace('localhost', '192.168.0.106', $video['url']);
 
 
   echo json_encode([
