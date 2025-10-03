@@ -9,6 +9,11 @@ if (!isset($_GET['codigo'])) {
 }
 
 $codigo = $_GET['codigo'];
+$ipLocal = $_SERVER['SERVER_ADDR'];
+
+// print_r($ipLocal);
+// die();
+
 
 try {
   $db = new conexao();
@@ -48,12 +53,15 @@ try {
   // 10.0.2.2 emulador
   // 192.168.1.167 ip
   // $urlVideo = str_replace('localhost', '10.0.2.2', $video['url']);
-  $urlVideo = str_replace('localhost', '192.168.0.106', $video['url']);
+  // $urlVideo = str_replace('localhost', '192.168.0.106', $video['url']);
+  // $urlVideo = str_replace('localhost', '192.168.1.167', $video['url']);
+  $urlVideo = str_replace('localhost', $ipLocal, $video['url']);
 
 
   echo json_encode([
     'url' => $urlVideo,
-    'grupo' => $video['grupo']
+    'grupo' => $video['grupo'],
+    'ip_ws' => $ipLocal
   ]);
 
 } catch (PDOException $ex) {
